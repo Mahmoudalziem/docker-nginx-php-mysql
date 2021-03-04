@@ -23,8 +23,8 @@ jobs:
         password: ${{ secrets.AzureAppService_ContainerPassword_d4a85b093d624c11b90e2b4ec389c333 }}
 
     - run: |
-        docker build . -t index.docker.io/${{ secrets.AzureAppService_ContainerUsername_a4260f65ca5a484680def47b016d08b7 }}/ngnix:${{ github.sha }}
-        docker push index.docker.io/${{ secrets.AzureAppService_ContainerUsername_a4260f65ca5a484680def47b016d08b7 }}/ngnix:${{ github.sha }}
+        docker build . -t index.docker.io/${{ secrets.AzureAppService_ContainerUsername_a4260f65ca5a484680def47b016d08b7 }}/nginx:${{ github.sha }}
+        docker push index.docker.io/${{ secrets.AzureAppService_ContainerUsername_a4260f65ca5a484680def47b016d08b7 }}/nginx:${{ github.sha }}
 
     - name: Deploy to Azure Web App
       uses: azure/webapps-deploy@v2
@@ -32,4 +32,4 @@ jobs:
         app-name: 'ahmed123'
         slot-name: 'production'
         publish-profile: ${{ secrets.AzureAppService_PublishProfile_32f89dd6648242a09a2fc1876efd3efb }}
-        images: 'index.docker.io/${{ secrets.AzureAppService_ContainerUsername_a4260f65ca5a484680def47b016d08b7 }}/ngnix:${{ github.sha }}'
+        images: 'index.docker.io/${{ secrets.AzureAppService_ContainerUsername_a4260f65ca5a484680def47b016d08b7 }}/nginx:${{ github.sha }}'
